@@ -1,0 +1,371 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13495,        361]
+NotebookOptionsPosition[     13193,        348]
+NotebookOutlinePosition[     13540,        363]
+CellTagsIndexPosition[     13497,        360]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Bfield", "[", 
+   RowBox[{"x_", ",", "y_", ",", "z_"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0", ",", ".001"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"path", "[", "t_", "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"v", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "+", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         RowBox[{"t", "^", "2"}], "/", "2"}], " ", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], "\[LessEqual]", "width"}], " ", "&&",
+      " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"v", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "+", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         RowBox[{"t", "^", "2"}], "/", "2"}], " ", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], "\[GreaterEqual]", 
+      RowBox[{"-", "width"}]}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"t", " ", 
+       RowBox[{"v", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", "500000"}], ",", 
+      RowBox[{
+       RowBox[{"v", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "+", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         RowBox[{"t", "^", "2"}], "/", "2"}], " ", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{"t", " ", 
+        RowBox[{"v", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "+", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         RowBox[{"t", "^", "2"}], "/", "2"}], " ", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}]}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"t", " ", 
+       RowBox[{"v", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", "500000"}], ",", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"Sign", "[", "c", "]"}]}], "*", 
+       RowBox[{"Sign", "[", "q", "]"}], "width"}], ",", 
+      RowBox[{
+       RowBox[{"t", " ", 
+        RowBox[{"v", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "+", 
+       RowBox[{"c", " ", 
+        RowBox[{
+         RowBox[{"t", "^", "2"}], "/", "2"}], " ", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}]}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"width", "=", "1.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"thickness", "=", ".025"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vinit", "=", 
+   RowBox[{"{", 
+    RowBox[{"vd", ",", "0", ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"v", "=", "vinit"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"m", "=", "9.1*^-31"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"a", ":=", 
+    RowBox[{
+     RowBox[{"q", "/", "m"}], "*", 
+     RowBox[{"v", "\[Cross]", 
+      RowBox[{"Bfield", "[", 
+       RowBox[{"x", ",", "y", ",", "z"}], "]"}]}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Vh", "=", 
+   RowBox[{"i", "*", 
+    RowBox[{
+     RowBox[{"Bfield", "[", 
+      RowBox[{"x", ",", "y", ",", "z"}], "]"}], "[", 
+     RowBox[{"[", "3", "]"}], "]"}], "*", 
+    RowBox[{"1000", "/", 
+     RowBox[{"(", 
+      RowBox[{"n", "*", "q", "*", "thickness"}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"q", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"sign", "\[Equal]", "\"\<-\>\""}], ",", 
+        RowBox[{
+         RowBox[{"-", "charge"}], "*", "1.62*^-19"}], ",", 
+        RowBox[{"charge", "*", "1.62*^-19"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"n", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"material", " ", "\[Equal]", " ", "\"\<Copper\>\""}], ",", 
+        "8.49*^22", ",", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"material", "\[Equal]", "\"\<Gold\>\""}], ",", "5.85*^22", 
+          " ", ",", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"material", "\[Equal]", "\"\<Silver\>\""}], ",", 
+            "5.9*^22", ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"material", "\[Equal]", "\"\<Aluminum\>\""}], ",", 
+              "2.1*^23", ",", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"material", "\[Equal]", "\"\<Silicon\>\""}], ",", 
+                "1*^20", ",", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"material", "\[Equal]", "\"\<Germanium\>\""}], ",", 
+                  "2.01*^18"}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"vd", "=", "1*^-3"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"i", "=", 
+      RowBox[{"q", "*", "width", "*", "thickness", "*", "vd", "*", "n"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Grid", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{"Show", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"p1", "=", 
+            RowBox[{"SliceVectorPlot3D", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"s", "*", 
+                RowBox[{"Bfield", "[", 
+                 RowBox[{"x", ",", "y", ",", "z"}], "]"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"z", "\[Equal]", "0"}], ",", 
+                RowBox[{
+                 RowBox[{"Abs", "[", "y", "]"}], "\[LessEqual]", "width"}]}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"x", ",", "0", ",", "5"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"y", ",", 
+                RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"z", ",", 
+                RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+              RowBox[{"AxesLabel", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"x", ",", "y", ",", "z"}], "}"}]}], ",", 
+              RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+              RowBox[{"VectorScale", "\[Rule]", 
+               RowBox[{
+                RowBox[{"Sqrt", "[", 
+                 RowBox[{"Abs", "[", "s", "]"}], "]"}], "/", "30"}]}], ",", 
+              RowBox[{"VectorPoints", "\[Rule]", "5"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", "None"}]}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"p2", "=", 
+            RowBox[{"ParametricPlot3D", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"path", "[", "t", "]"}], "/.", 
+                RowBox[{"c", "\[Rule]", "s"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", 
+               RowBox[{"Directive", "[", 
+                RowBox[{"Green", ",", "Thick"}], "]"}]}], ",", 
+              RowBox[{"PlotPoints", "\[Rule]", "35"}], ",", 
+              RowBox[{"AxesLabel", "\[Rule]", "False"}]}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"p4", "=", 
+            RowBox[{"Graphics3D", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"material", " ", "\[Equal]", " ", "\"\<Copper\>\""}],
+                  ",", "LightPink", ",", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{"material", "\[Equal]", "\"\<Gold\>\""}], ",", 
+                   "Yellow", " ", ",", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"material", "\[Equal]", "\"\<Silver\>\""}], ",", 
+                    "LightGray", ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"material", "\[Equal]", "\"\<Aluminum\>\""}], ",",
+                     "Gray", ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"material", "\[Equal]", "\"\<Silicon\>\""}], ",", 
+                    "Black", ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"material", "\[Equal]", "\"\<Germanium\>\""}], 
+                    ",", "Gray"}], "]"}]}], "]"}]}], "]"}]}], "]"}]}], 
+                  "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"Opacity", "[", "0.3", "]"}], ",", 
+               RowBox[{"Cuboid", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"-", "width"}], ",", 
+                   RowBox[{"-", "thickness"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"5", ",", "width", ",", "thickness"}], "}"}]}], 
+                "]"}]}], "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"p5", "=", 
+            RowBox[{"SliceVectorPlot3D", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", "0", ",", "0"}], "}"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"z", "\[Equal]", "0"}], ",", 
+                RowBox[{
+                 RowBox[{"Abs", "[", "y", "]"}], "\[LessEqual]", "0.1"}]}], 
+               "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"x", ",", "0", ",", "5"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"y", ",", 
+                RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"z", ",", 
+                RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", "None"}], ",", 
+              RowBox[{"VectorStyle", "\[Rule]", "Yellow"}]}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Show", "[", 
+            RowBox[{"p1", ",", "p2", ",", "p4"}], "]"}]}], "]"}], "}"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Text", "@", 
+          RowBox[{"Grid", "[", 
+           RowBox[{
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"\"\<Hall Voltage \>\"", ",", "\"\<=\>\"", ",", 
+                RowBox[{"NumberForm", "[", 
+                 RowBox[{
+                  RowBox[{"N", "[", "Vhall", "]"}], ",", "5"}], "]"}], ",", 
+                "\"\<Volts\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Current \>\"", ",", "\"\<=\>\"", ",", 
+                RowBox[{"N", "[", 
+                 RowBox[{"i", ",", "3"}], "]"}], ",", "\"\<Amps\>\""}], 
+               "}"}]}], "\[IndentingNewLine]", "}"}], ",", 
+            RowBox[{"Alignment", "\[Rule]", "Center"}]}], "]"}]}], 
+         "\[IndentingNewLine]", "}"}]}], "}"}], "\[IndentingNewLine]", 
+      "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"s", ",", "1", ",", "\"\<Magnetic Field Strength (mT)\>\""}], 
+       "}"}], ",", 
+      RowBox[{"-", "2"}], ",", "2", ",", 
+      RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "thickness", ",", "0.025", ",", "\"\<Thickness of plate (m)\>\""}], 
+       "}"}], ",", "0.001", ",", "0.05", ",", 
+      RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"charge", ",", "1", ",", "\"\<Charge Magnitude (e)\>\""}], 
+       "}"}], ",", "1", ",", "20", ",", 
+      RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"material", ",", "\"\<Copper\>\"", ",", "\"\<Material\>\""}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Copper\>\"", ",", "\"\<Gold\>\"", ",", "\"\<Silver\>\"", ",", 
+        "\"\<Aluminum\>\""}], "}"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"sign", ",", "\"\<-\>\"", ",", "\"\<Sign of Charge\>\""}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<+\>\"", ",", "\"\<-\>\""}], "}"}]}], "}"}]}], "]"}], "/.", 
+  RowBox[{"Vhall", "\[Rule]", 
+   RowBox[{"Vh", "*", "s"}]}]}]}], "Input",ExpressionUUID->"b94301af-2147-\
+4fae-a10e-e18999572cb3"]
+},
+WindowSize->{775, 753},
+WindowMargins->{{Automatic, -3360}, {-113, Automatic}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 12631, 326, 865, "Input",ExpressionUUID->"b94301af-2147-4fae-a10e-e18999572cb3"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
